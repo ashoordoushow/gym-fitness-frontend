@@ -7,7 +7,7 @@ export function ExercisesPage() {
 
   const handleIndex = () => {
     console.log("handleIndex");
-    axios.get("/exercises.json").then((response) => {
+    axios.get("http://localhost:3000/exercises.json").then((response) => {
       console.log(response.data);
       setExercises(response.data);
     });
