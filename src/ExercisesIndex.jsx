@@ -1,7 +1,7 @@
 export function ExercisesIndex({ exercises }) {
   return (
-    <div>
-      <h1>All exercises</h1>
+    <div id="exercises-index">
+      <h1>Strength Training Exercises, Lets Get Strong!</h1>
       {exercises.map((exercise) => (
         <div key={exercise.id}>
           <h2>{exercise.name}</h2>
@@ -21,3 +21,4 @@ export function ExercisesIndex({ exercises }) {
     </div>
   );
 }
+

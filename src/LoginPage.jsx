@@ -14,7 +14,7 @@ export function LoginPage() {
     setErrors([]);
     const params = new FormData(event.target);
     axios
-      .post("http://localhost:3000/sessions.json", params)
+      .post("/sessions.json", params)
       .then((response) => {
         console.log(response.data);
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
@@ -44,7 +44,9 @@ export function LoginPage() {
           Password: <input name="password" type="password" />
         </div>
         <button type="submit">Login</button>
+        <a href="/signup"> New? Create account</a>
       </form>
     </div>
   );
 }
+

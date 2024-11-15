@@ -4,7 +4,7 @@ export function RoutinesNew({ onCreate }) {
     const params = new FormData(event.target);
     onCreate(params, () => event.target.reset());
   };
-  
+
   return (
     <div>
       <h1>New Routine</h1>
@@ -19,7 +19,7 @@ export function RoutinesNew({ onCreate }) {
           Reps: <input name="reps" type="text" />
         </div>
         <div>
-          Sets: <input name="Sets" type="text" />
+          Sets: <input name="sets" type="text" />
         </div>
         <button type="submit">Create</button>
       </form>

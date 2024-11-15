@@ -23,7 +23,7 @@ export function SignupPage() {
 
   return (
     <div id="signup">
-      <h1>Signup</h1>
+      <h1>New? Create an Account for FREE! </h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -40,9 +40,12 @@ export function SignupPage() {
           Password: <input name="password" type="password" />
         </div>
         <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+          Confirm New Password: <input name="password_confirmation" type="password" />
         </div>
-        <button type="submit">Signup</button>
+        <div>
+          Profile Picture: <input name="image_url" type="image_url" />
+        </div>
+        <button type="submit">Create Account</button>
       </form>
     </div>
   );
