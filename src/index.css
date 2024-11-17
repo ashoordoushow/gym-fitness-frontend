@@ -1,3 +1,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+
+/* In App.css or your custom CSS */
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* In App.css or your custom CSS */
+.nav-link:hover {
+  text-decoration: underline !important;
+}
+

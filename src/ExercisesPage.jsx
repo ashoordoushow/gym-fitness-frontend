@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { RoutinesNew } from "./RoutinesNew";
 
 
+
 export function ExercisesPage() {
   const [exercises, setExercises] = useState([]);
 
