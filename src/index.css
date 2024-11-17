@@ -13,3 +13,61 @@ html {
   text-decoration: underline !important;
 }
 
+.custom-hover {
+  background-color: #ff6600;  /* Bright neon orange inside */
+  border-color: #ff6600;      /* Border also matches the neon orange */
+  color: black;               /* Text inside the button remains black */
+  box-shadow: 0 0 10px #268cda, 0 0 20px #227ecf, 0 0 30px #1a74c3; /* Neon orange glow around the button */
+  transition: all 0.3s ease;
+}
+
+.custom-hover:hover {
+  background-color: #1267a0;  /* Keep the bright orange background on hover */
+  box-shadow: 0 0 15px #197bbc, 0 0 25px #1c8bcb, 0 0 35px #0f62a1; /* Intensifies the neon orange glow effect on hover */
+  color: black;               /* Keep text color black */
+  transform: scale(1.05);     /* Slight grow effect on hover */
+}
+
+.cool-heading {
+  font-family: 'Bangers', cursive;
+  color: #010101; /* Bright orange */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Cool shadow effect */
+  letter-spacing: 2px; /* Spacing between letters */
+  text-transform: uppercase; /* Make it all uppercase */
+}
+
+.video-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8); /* Dim background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.embedded-video {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+.close-video-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-video-button:hover {
+  color: red;
+}
