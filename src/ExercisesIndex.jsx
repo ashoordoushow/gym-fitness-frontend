@@ -4,14 +4,9 @@ export function ExercisesIndex({ exercises }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   return (
-    <div id="exercises-index" className="container"> {/* Use Bootstrap's container */}
+    <div id="exercises-index" className="container">
       {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        className="background-video"
-      >
+      <video autoPlay loop muted className="background-video">
         <source src="/videos/vecteezy_animated-icon-of-a-weightlifting-athlete-with-a-glowing-neon_35888286.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -19,34 +14,34 @@ export function ExercisesIndex({ exercises }) {
       {/* Content Overlay */}
       <div className="content-overlay">
         <h1 className="text-center mb-4 cool-heading">Strength Training Exercises</h1>
-        
-        {/* Embedded Video Player */}
+
+        {/* Video Modal */}
         {selectedVideo && (
-          <div className="video-container">
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="Exercise Video"
-              className="embedded-video"
-            ></iframe>
-            <button
-              className="close-video-button"
-              onClick={() => setSelectedVideo(null)}
-            >
-              &times;
-            </button>
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="Exercise Video"
+                className="embedded-video"
+              ></iframe>
+              <button
+                className="close-video-button"
+                onClick={() => setSelectedVideo(null)}
+                aria-label="Close Video"
+              >
+                &times;
+              </button>
+            </div>
           </div>
         )}
 
         {/* Exercise Cards */}
         <div className="row">
           {exercises.map((exercise) => (
-            <div
-              key={exercise.id}
-              className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-            >
+            <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
               <div className="card shadow-sm border border-dark">
                 <img
                   src={exercise.image_url}
