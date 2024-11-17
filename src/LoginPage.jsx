@@ -30,6 +30,17 @@ export function LoginPage() {
 
   return (
     <div id="login">
+       {/* Background Video */}
+       <video
+        autoPlay
+        loop
+        muted
+        className="background-video"
+      >
+        <source src="/videos/vecteezy_animated-icon-of-a-weightlifting-athlete-with-a-glowing-neon_35888286.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <h1>Login</h1>
       <ul>
         {errors.map((error) => (
