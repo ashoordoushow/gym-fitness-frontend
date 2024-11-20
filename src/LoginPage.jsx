@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa"; // For icons (react-icons library)
 
+
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
@@ -9,7 +10,9 @@ if (jwt) {
 
 export function LoginPage() {
   const [errors, setErrors] = useState([]);
-
+  const [email, setEmail] = useState ([]);
+  const [password, setPassword] = useState ([]);
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
@@ -78,6 +81,9 @@ export function LoginPage() {
             <input
               name="email"
               type="email"
+              value={email} 
+              onChange={(event) => setEmail(event.target.value)}
+              maxLength={100}
               className="form-control pe-5"
               placeholder="Email"
               required
@@ -98,6 +104,9 @@ export function LoginPage() {
             <input
               name="password"
               type="password"
+              value={password} 
+              onChange={(event) => setPassword(event.target.value)}
+              maxLength={50}
               className="form-control pe-5"
               placeholder="Password"
               required

@@ -3,6 +3,10 @@ import { useState } from "react";
 
 export function SignupPage() {
   const [errors, setErrors] = useState([]);
+  const [name, setName] = useState ([]);
+  const [email, setEmail] = useState ([]);
+  const [password, setPassword] = useState ([]);
+  const [confirmPassword, setConfirmPassword] = useState ([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -86,6 +90,9 @@ export function SignupPage() {
             <input
               name="name"
               type="text"
+              value={name} 
+              onChange={(event) => setName(event.target.value)} 
+              maxLength={30}
               className="form-control"
               placeholder="Name"
               required
@@ -97,6 +104,9 @@ export function SignupPage() {
             <input
               name="email"
               type="email"
+              value={email} 
+              onChange={(event) => setEmail(event.target.value)}
+              maxLength={100}
               className="form-control"
               placeholder="Email"
               required
@@ -108,6 +118,9 @@ export function SignupPage() {
             <input
               name="password"
               type="password"
+              value={password} 
+              onChange={(event) => setPassword(event.target.value)}
+              maxLength={50}
               className="form-control"
               placeholder="Password"
               required
@@ -119,6 +132,9 @@ export function SignupPage() {
             <input
               name="password_confirmation"
               type="password"
+              value={confirmPassword} 
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              maxLength={50}
               className="form-control"
               placeholder="Confirm Password"
               required
