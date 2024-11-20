@@ -1,18 +1,16 @@
 import axios from "axios";
 
-export function LogoutLink() {
+export function LogoutLink({ className }) {
   const handleClick = (event) => {
-    event.preventDefault();
-    delete axios.defaults.headers.common["Authorization"];
-    localStorage.removeItem("jwt");
-    window.location.href = "/";
+    event.preventDefault(); // Prevent the default anchor link behavior
+    delete axios.defaults.headers.common["Authorization"]; // Remove the Authorization header
+    localStorage.removeItem("jwt"); // Clear the token from localStorage
+    window.location.href = "/"; // Redirect to the homepage or another desired route
   };
 
   return (
-    <div id="logout">
-    <a href="#" onClick={handleClick}>
+    <a href="#" className={className} onClick={handleClick}>
       Logout
     </a>
-    </div>
   );
 }
