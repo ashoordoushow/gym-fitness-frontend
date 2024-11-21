@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa"; // For icons (react-icons library)
 
 
+
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
@@ -12,7 +13,7 @@ export function LoginPage() {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState ([]);
   const [password, setPassword] = useState ([]);
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);

@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios"
 
 export function ExercisesIndex({ exercises }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const handleCreate = (exerciseId) => {
+    axios.post("/routines.json", {exercise_id: exerciseId}).then((response) => {
+      // setRoutines([...routines, response.data]);
+      // successCallback();
+  });
+};
 
   return (
     <div id="exercises-index" className="container">
@@ -64,7 +71,7 @@ export function ExercisesIndex({ exercises }) {
                   {/* Add to Routine Button */}
                   <button
                     className="btn custom-hover mt-2"
-                    onClick={() => handleAddToRoutine(exercise.id)}
+                    onClick={() => handleCreate(exercise.id)}
                   >
                     Add to Routine
                   </button>

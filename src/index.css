@@ -134,3 +134,35 @@ h1.cool-heading {
   z-index: 3;
 }
 
+.custom-footer {
+  background-color: rgba(0, 0, 0, 0.8); /* Matches video background with opacity */
+  backdrop-filter: blur(5px); /* Adds subtle glassmorphic blur */
+  color: #ddd; /* Light gray for better readability */
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.custom-footer a {
+  color: #ddd;
+  transition: color 0.3s;
+  text-decoration: none; /* Ensures consistency */
+}
+
+.custom-footer a:hover {
+  color: #fff;
+}
+
+.custom-footer i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.custom-footer i:hover {
+  color: #fff;
+  transform: scale(1.2); /* Adds a slight zoom effect */
+}
+
+

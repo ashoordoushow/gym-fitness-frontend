@@ -5,6 +5,8 @@ import { Footer } from "./Footer";
 import { SignupPage } from "./SignupPage"
 import { LoginPage } from "./LoginPage";
 import { LogoutLink } from "./LogoutLink";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 const router = createBrowserRouter([

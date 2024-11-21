@@ -10,7 +10,7 @@ export function Header() {
   // Fetch current user from backend
   const getUserData = () => {
     console.log('Getting user data...');
-    axios.get("http://localhost:3000/users/current.json")
+    axios.get("/users/current.json")
       .then(response => {
         console.log(response.data);
         setCurrentUser(response.data);
