@@ -88,7 +88,7 @@ export function Header() {
               <Link className="nav-link text-decoration-none" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-decoration-none" to="/my-routine">My Routine</Link>
+              <Link className="nav-link text-decoration-none" to="/routines-new">My Routine</Link>
             </li>
             {authenticationLinks}
           </ul>

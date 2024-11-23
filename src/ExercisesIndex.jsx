@@ -1,28 +1,36 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
 
-export function ExercisesIndex({ exercises }) {
+export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const handleCreate = (exerciseId) => {
-    axios.post("/routines.json", {exercise_id: exerciseId}).then((response) => {
-      // setRoutines([...routines, response.data]);
-      // successCallback();
-  });
-};
+
+  const handleAddToRoutine = (exercise) => {
+    const routineData = { exercise_id: exercise.id, reps: "", sets: "" };
+
+    axios
+      .post("/routines.json", routineData)
+      .then((response) => {
+        console.log("Routine added:", response.data);
+        onAddToRoutine(response.data); // Pass the new routine to the parent component for state update
+        alert("Exercise added to your routine!");
+      })
+      .catch((error) => {
+        console.error("Error adding routine:", error);
+        alert("Could not add exercise to routine. Please try again.");
+      });
+  };
 
   return (
     <div id="exercises-index" className="container">
-      {/* Background Video */}
       <video autoPlay loop muted className="background-video">
-        <source src="/videos/vecteezy_animated-icon-of-a-weightlifting-athlete-with-a-glowing-neon_35888286.mp4" type="video/mp4" />
+        <source
+          src="/videos/vecteezy_animated-icon-of-a-weightlifting-athlete-with-a-glowing-neon_35888286.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
-
-      {/* Content Overlay */}
       <div className="content-overlay">
         <h1 className="text-center mb-4 cool-heading">Strength Training Exercises</h1>
-
-        {/* Video Modal */}
         {selectedVideo && (
           <div className="modal-overlay">
             <div className="modal-content">
@@ -44,8 +52,6 @@ export function ExercisesIndex({ exercises }) {
             </div>
           </div>
         )}
-
-        {/* Exercise Cards */}
         <div className="row">
           {exercises.map((exercise) => (
             <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
@@ -68,10 +74,9 @@ export function ExercisesIndex({ exercises }) {
                   >
                     Watch Video
                   </button>
-                  {/* Add to Routine Button */}
                   <button
                     className="btn custom-hover mt-2"
-                    onClick={() => handleCreate(exercise.id)}
+                    onClick={() => handleAddToRoutine(exercise)}
                   >
                     Add to Routine
                   </button>
@@ -84,8 +89,3 @@ export function ExercisesIndex({ exercises }) {
     </div>
   );
 }
-
-// Example handleAddToRoutine function
-const handleAddToRoutine = (exerciseId) => {
-  console.log(`Exercise with ID: ${exerciseId} added to routine`);
-};

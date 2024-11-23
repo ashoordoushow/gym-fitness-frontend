@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import axios from 'axios'
 import { Header } from "./Header";
 import { ExercisesPage } from "./ExercisesPage";
 import { Footer } from "./Footer";
 import { SignupPage } from "./SignupPage"
 import { LoginPage } from "./LoginPage";
 import { LogoutLink } from "./LogoutLink";
+import { RoutinesNew } from "./RoutinesNew";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -34,6 +36,11 @@ const router = createBrowserRouter([
       {
         path: "/logout",
         element: <LogoutLink />,
+      },
+      {
+        path: "/routines-new",
+        element: <RoutinesNew />,
+        loader: () => axios.get("http://localhost:3000/routines.json").then(response => response.data)
       },
     ],
   },

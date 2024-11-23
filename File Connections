@@ -5,10 +5,14 @@
                                                 app.jsx  
                                               
 
-     Header                                    ExercisePage                               Footer
+     Header (set to every page)                ExercisePage                                Footer (set to every page)
        v                                            v
+    Home (is ExercisePage)              ExercisesIndex(has button to add to My Routine page)
+
+   My Routine(is own page,RoutinesNew.jsx)
+    
+    LoginPage (its own page)                              
+
+    SignupPage (its own page)           
                                     
-SignupPage / LoginPage / Logoutlink          ExercisesIndex / RoutinesNew
-                                    
-(move LoginPage & SignupPage to its own
-page and make this the main page/ & style it!)
+Logoutlink (appears after signed in)
