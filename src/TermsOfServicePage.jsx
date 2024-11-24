@@ -1,10 +1,17 @@
 import React from 'react';
 
 export function TermsOfServicePage() {
+  // Get the current date in the format: Month Day, Year
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
     <div className="container my-5">
       <h1 className="text-center mb-4">Terms of Service</h1>
-      <p className="text-center text-muted">Last updated 07/21/2023</p>
+      <p className="text-center text-muted">Last updated: {currentDate}</p>
 
       <div className="terms-content">
         <p>

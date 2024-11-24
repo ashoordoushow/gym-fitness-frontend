@@ -25,7 +25,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-light text-decoration-none">
+                <Link to="/privacy" className="text-light text-decoration-none"> {/* Updated to match route */}
                   Privacy Policy
                 </Link>
               </li>

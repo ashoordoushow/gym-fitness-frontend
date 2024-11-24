@@ -11,6 +11,7 @@ import { ForgotPasswordPage } from "./ForgotPasswordPage";  // Import the Forgot
 import { VerifyCodePage } from "./VerifyCodePage";  // Import the VerifyCodePage
 import { ResetPasswordPage } from "./ResetPasswordPage";  // Import the ResetPasswordPage
 import { TermsOfServicePage } from "./TermsOfServicePage";  // Import the TermsOfServicePage
+import { PrivacyPolicyPage } from "./PrivacyPolicyPage"; // Import the PrivacyPolicyPage
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const router = createBrowserRouter([
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
         element: <ResetPasswordPage />,  // Route for Reset Password
       },
       {
-        path: "/terms-of-service",  // Add route for Terms of Service page
-        element: <TermsOfServicePage />,  // Route for Terms of Service
+        path: "/terms-of-service",  // Route for Terms of Service page
+        element: <TermsOfServicePage />,
+      },
+      {
+        path: "/privacy",  // Route for Privacy Policy page
+        element: <PrivacyPolicyPage />,  // Add Privacy Policy Page route here
       },
     ],
   },
