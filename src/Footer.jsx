@@ -20,7 +20,7 @@ export function Footer() {
             </h5>
             <ul className="list-unstyled">
               <li>
-                <Link to="/terms" className="text-light text-decoration-none">
+                <Link to="/terms-of-service" className="text-light text-decoration-none">
                   Terms of Service
                 </Link>
               </li>

@@ -10,6 +10,7 @@ import { RoutinesNew } from "./RoutinesNew";
 import { ForgotPasswordPage } from "./ForgotPasswordPage";  // Import the ForgotPasswordPage
 import { VerifyCodePage } from "./VerifyCodePage";  // Import the VerifyCodePage
 import { ResetPasswordPage } from "./ResetPasswordPage";  // Import the ResetPasswordPage
+import { TermsOfServicePage } from "./TermsOfServicePage";  // Import the TermsOfServicePage
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/reset-password",
         element: <ResetPasswordPage />,  // Route for Reset Password
+      },
+      {
+        path: "/terms-of-service",  // Add route for Terms of Service page
+        element: <TermsOfServicePage />,  // Route for Terms of Service
       },
     ],
   },
