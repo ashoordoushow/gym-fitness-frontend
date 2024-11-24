@@ -41,18 +41,19 @@ export function RoutinesNew() {
       });
   };
 
-  // Add a new routine to the backend
-  const handleAddToRoutine = (routineData) => {
+  // Remove a routine from the backend
+  const handleRemove = (routineId) => {
     axios
-      .post("/routines.json", routineData)
+      .delete(`/routines/${routineId}.json`)
       .then((response) => {
-        console.log("Routine added:", response.data);
-        // Refresh the routines list
-        fetchRoutines();
-        alert("Exercise added to routine!");
+        console.log(response.data.message);
+        // Update the state to remove the deleted routine
+        setRoutines(routines.filter((routine) => routine.id !== routineId));
+        alert("Exercise removed from your routine.");
       })
       .catch((error) => {
-        console.error("Error adding to routine:", error);
+        console.error("Error removing routine:", error);
+        alert("Failed to remove exercise. Please try again.");
       });
   };
 
@@ -169,6 +170,14 @@ export function RoutinesNew() {
                         Save Changes
                       </button>
                     </form>
+
+                    {/* Remove Button */}
+                    <button
+                      className="btn btn-danger w-100 mt-3"
+                      onClick={() => handleRemove(routine.id)}
+                    >
+                      Remove Exercise
+                    </button>
                   </div>
                 </div>
               </div>

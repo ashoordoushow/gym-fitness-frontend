@@ -3,6 +3,7 @@ import axios from "axios";
 
 export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleAddToRoutine = (exercise) => {
     const routineData = { exercise_id: exercise.id, reps: "", sets: "" };
@@ -16,7 +17,13 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
       })
       .catch((error) => {
         console.error("Error adding routine:", error);
-        alert("Could not add exercise to routine. Please try again.");
+
+        if (error.response && error.response.status === 500) {
+          // Show modal if user is not logged in
+          setShowLoginModal(true);
+        } else {
+          alert("Could not add exercise to routine. Please try again.");
+        }
       });
   };
 
@@ -31,6 +38,7 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
       </video>
       <div className="content-overlay">
         <h1 className="text-center mb-4 cool-heading">Strength Training Exercises</h1>
+
         {selectedVideo && (
           <div className="modal-overlay">
             <div className="modal-content">
@@ -52,6 +60,28 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
             </div>
           </div>
         )}
+
+        {showLoginModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h5>You need to log in to add exercises to your routine.</h5>
+              <a
+                href="/login"
+                className="btn btn-primary mt-3"
+                style={{ textDecoration: "none" }}
+              >
+                Go to Login Page
+              </a>
+              <button
+                className="btn btn-secondary mt-3"
+                onClick={() => setShowLoginModal(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="row">
           {exercises.map((exercise) => (
             <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
