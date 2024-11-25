@@ -5,6 +5,20 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
+  // Helper function to group exercises by category
+  const groupExercisesByCategory = (exercises) => {
+    return exercises.reduce((groups, exercise) => {
+      const { category } = exercise;
+      if (!groups[category]) {
+        groups[category] = [];
+      }
+      groups[category].push(exercise);
+      return groups;
+    }, {});
+  };
+
+  const groupedExercises = groupExercisesByCategory(exercises);
+
   const handleAddToRoutine = (exercise) => {
     const routineData = { exercise_id: exercise.id, reps: "", sets: "" };
 
@@ -82,39 +96,47 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
           </div>
         )}
 
-        <div className="row">
-          {exercises.map((exercise) => (
-            <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-              <div className="card shadow-sm border border-dark">
-                <img
-                  src={exercise.image_url}
-                  className="card-img-top"
-                  alt={exercise.name}
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{exercise.name}</h5>
-                  <p className="card-text">{exercise.description}</p>
-                  <button
-                    className="btn custom-hover mt-2 me-2"
-                    onClick={() => {
-                      const videoId = exercise.video_url.split("v=")[1];
-                      setSelectedVideo(videoId);
-                    }}
-                  >
-                    Watch Video
-                  </button>
-                  <button
-                    className="btn custom-hover mt-2"
-                    onClick={() => handleAddToRoutine(exercise)}
-                  >
-                    Add to Routine
-                  </button>
+        {/* Render exercises grouped by category */}
+        {Object.keys(groupedExercises).map((category) => (
+          <div key={category}>
+            <h2 className="text-center mt-5 mb-3">
+              {category.charAt(0).toUpperCase() + category.slice(1)} Exercises
+            </h2>
+            <div className="row">
+              {groupedExercises[category].map((exercise) => (
+                <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                  <div className="card shadow-sm border border-dark">
+                    <img
+                      src={exercise.image_url}
+                      className="card-img-top"
+                      alt={exercise.name}
+                      style={{ height: "200px", objectFit: "cover" }}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{exercise.name}</h5>
+                      <p className="card-text">{exercise.description}</p>
+                      <button
+                        className="btn custom-hover mt-2 me-2"
+                        onClick={() => {
+                          const videoId = exercise.video_url.split("v=")[1];
+                          setSelectedVideo(videoId);
+                        }}
+                      >
+                        Watch Video
+                      </button>
+                      <button
+                        className="btn custom-hover mt-2"
+                        onClick={() => handleAddToRoutine(exercise)}
+                      >
+                        Add to Routine
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
