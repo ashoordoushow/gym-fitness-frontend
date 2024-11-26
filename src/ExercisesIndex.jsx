@@ -4,9 +4,8 @@ import axios from "axios";
 export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // State for the search bar
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Helper function to group exercises by category
   const groupExercisesByCategory = (exercises) => {
     return exercises.reduce((groups, exercise) => {
       const { category } = exercise;
@@ -18,7 +17,6 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
     }, {});
   };
 
-  // Filter exercises based on the search term
   const filteredExercises = exercises.filter((exercise) =>
     exercise.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -32,14 +30,13 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
       .post("/routines.json", routineData)
       .then((response) => {
         console.log("Routine added:", response.data);
-        onAddToRoutine(response.data); // Pass the new routine to the parent component for state update
+        onAddToRoutine(response.data);
         alert("Exercise added to your routine!");
       })
       .catch((error) => {
         console.error("Error adding routine:", error);
 
         if (error.response && error.response.status === 500) {
-          // Show modal if user is not logged in
           setShowLoginModal(true);
         } else {
           alert("Could not add exercise to routine. Please try again.");
@@ -57,7 +54,6 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
         Your browser does not support the video tag.
       </video>
       <div className="content-overlay">
-        {/* Header Section */}
         <div
           className="d-flex align-items-center justify-content-between mb-4 py-3 px-4 rounded shadow"
           style={{
@@ -76,12 +72,12 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
               width: "300px",
               maxWidth: "80%",
               border: "2px solid #007BFF",
-              backgroundColor: "#000", // black background
-              color: "#fff", // white text color
-              borderRadius: "25px", // Rounded corners
-              padding: "10px 20px", // Padding for better UX
-              fontSize: "16px", // Slightly larger font size for readability
-              boxShadow: "0px 0px 5px rgba(0, 123, 255, 0.5)", // Subtle glow effect
+              backgroundColor: "#000",
+              color: "#fff",
+              borderRadius: "25px",
+              padding: "10px 20px",
+              fontSize: "16px",
+              boxShadow: "0px 0px 5px rgba(0, 123, 255, 0.5)",
             }}
           />
         </div>
@@ -109,32 +105,83 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
         )}
 
         {showLoginModal && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <h5>You need to log in to add exercises to your routine.</h5>
-              <a
-                href="/login"
-                className="btn btn-primary mt-3"
-                style={{ textDecoration: "none" }}
+          <div
+            className="modal-overlay d-flex justify-content-center align-items-center"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              zIndex: 1050,
+              backdropFilter: "blur(5px)",
+            }}
+          >
+            <div
+              className="modal-content text-center p-4"
+              style={{
+                backgroundColor: "#fff",
+                borderRadius: "10px",
+                boxShadow: "0px 5px 15px rgba(0,0,0,0.3)",
+                width: "90%",
+                maxWidth: "400px",
+              }}
+            >
+              <h5
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: "600",
+                  marginBottom: "20px",
+                }}
               >
-                Go to Login Page
-              </a>
-              <button
-                className="btn btn-secondary mt-3"
-                onClick={() => setShowLoginModal(false)}
+                Login Required
+              </h5>
+              <p
+                style={{
+                  fontSize: "16px",
+                  color: "#333",
+                  marginBottom: "30px",
+                }}
               >
-                Close
-              </button>
+                You need to log in to add exercises to your routine. Please log
+                in or create an account.
+              </p>
+              <div className="d-flex justify-content-center gap-3">
+                <a
+                  href="/login"
+                  className="btn btn-primary px-4"
+                  style={{
+                    textDecoration: "none",
+                    borderRadius: "30px",
+                    backgroundColor: "#007BFF",
+                    color: "#fff",
+                    boxShadow: "0px 3px 8px rgba(0,123,255,0.3)",
+                  }}
+                >
+                  Login
+                </a>
+                <button
+                  className="btn btn-outline-secondary px-4"
+                  onClick={() => setShowLoginModal(false)}
+                  style={{
+                    borderRadius: "30px",
+                    border: "1px solid #ccc",
+                    backgroundColor: "#fff",
+                    color: "#333",
+                    boxShadow: "0px 3px 8px rgba(0,0,0,0.1)",
+                  }}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         )}
 
-        {/* Render exercises grouped by category */}
         {Object.keys(groupedExercises).map((category) => (
           <div key={category}>
-            <h2
-              className="exercise-category-title text-center mt-5 mb-3"
-            >
+            <h2 className="exercise-category-title text-center mt-5 mb-3">
               {category.charAt(0).toUpperCase() + category.slice(1)} Exercises
             </h2>
             <div className="row">

@@ -47,7 +47,6 @@ export function RoutinesNew() {
       .delete(`/routines/${routineId}.json`)
       .then((response) => {
         console.log(response.data.message);
-        // Update the state to remove the deleted routine
         setRoutines(routines.filter((routine) => routine.id !== routineId));
         alert("Exercise removed from your routine.");
       })
@@ -102,7 +101,6 @@ export function RoutinesNew() {
             {routines.map((routine, index) => (
               <div key={routine.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                 <div className="card shadow-sm border border-dark">
-                  {/* Exercise Image */}
                   <img
                     src={routine.exercise.image_url}
                     className="card-img-top"
@@ -110,11 +108,9 @@ export function RoutinesNew() {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                   <div className="card-body">
-                    {/* Exercise Details */}
-                    <h5 className="card-title">{routine.exercise.name}</h5>
-                    <p className="card-text">{routine.exercise.description}</p>
+                    <h5 className="card-title text-white">{routine.exercise.name}</h5>
+                    <p className="card-text text-white">{routine.exercise.description}</p>
 
-                    {/* Watch Video Button */}
                     {routine.exercise.video_url && (
                       <button
                         className="btn btn-secondary w-100 mb-3"
@@ -127,7 +123,6 @@ export function RoutinesNew() {
                       </button>
                     )}
 
-                    {/* Edit Routine */}
                     <form
                       onSubmit={(e) => {
                         e.preventDefault();
@@ -135,7 +130,7 @@ export function RoutinesNew() {
                       }}
                     >
                       <div className="mb-3">
-                        <label htmlFor={`reps-${routine.id}`} className="form-label">
+                        <label htmlFor={`reps-${routine.id}`} className="form-label text-white">
                           Reps
                         </label>
                         <input
@@ -145,25 +140,21 @@ export function RoutinesNew() {
                           className="form-control"
                           placeholder="Reps"
                           value={routine.reps || ""}
-                          onChange={(e) =>
-                            handleInputChange(index, "reps", e.target.value)
-                          }
+                          onChange={(e) => handleInputChange(index, "reps", e.target.value)}
                         />
                       </div>
                       <div className="mb-3">
-                        <label htmlFor={`sets-${routine.id}`} className="form-label">
+                        <label htmlFor={`sets-${routine.id}`} className="form-label text-white">
                           Sets
                         </label>
                         <input
                           id={`sets-${routine.id}`}
                           name="sets"
-                          type="text" // Input type set to text to enforce string handling
+                          type="text"
                           className="form-control"
                           placeholder="Sets"
                           value={routine.sets || ""}
-                          onChange={(e) =>
-                            handleInputChange(index, "sets", e.target.value)
-                          }
+                          onChange={(e) => handleInputChange(index, "sets", e.target.value)}
                         />
                       </div>
                       <button type="submit" className="btn btn-primary w-100">
@@ -171,7 +162,6 @@ export function RoutinesNew() {
                       </button>
                     </form>
 
-                    {/* Remove Button */}
                     <button
                       className="btn btn-danger w-100 mt-3"
                       onClick={() => handleRemove(routine.id)}
