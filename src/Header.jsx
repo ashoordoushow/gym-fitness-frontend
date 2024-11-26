@@ -47,13 +47,20 @@ export function Header() {
       </li>
     );
     userDisplay = (
-      <div className="navbar-text d-flex align-items-center">
+      <div className="navbar-text d-flex align-items-center" style={{ color: '#fff', fontSize: '1.1rem' }}>
         <img
           src={currentUser?.profilePic || "/default-profile.png"}
           alt="Profile"
-          style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }}
+          style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            marginRight: '10px',
+            transition: 'transform 0.3s ease', // Smooth transition for hover effect
+          }}
+          className="profile-img"
         />
-        <span>Welcome, {currentUser?.name || "User"}!</span>
+        <span className="ms-2">Welcome, <span style={{ fontWeight: 'bold' }}>{currentUser?.name || "User"}</span>!</span>
       </div>
     );
     myRoutineLink = (

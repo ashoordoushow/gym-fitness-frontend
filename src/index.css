@@ -467,6 +467,7 @@ h1.cool-heading {
   align-items: center;
   font-size: 1.2rem; /* Increased font size */
   transition: transform 0.3s ease;
+  margin-right: 1px; /* Added space between the text and the flag */
 }
 
 .navbar-text img {
@@ -491,11 +492,13 @@ h1.cool-heading {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7); /* Glowing effect */
   transition: transform 0.3s ease;
+  margin-left: 10px; /* Add space on the left side of the flag */
 }
 
 .assyria-flag:hover {
   transform: scale(1.1); /* Zoom effect */
 }
+
 
 /* Navbar Toggler */
 .navbar-toggler {
@@ -522,6 +525,24 @@ h1.cool-heading {
   }
 }
 
+
+/* Welcome User CSS */
+/* Style for the profile image hover effect */
+.profile-img:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+/* Styling for the welcome text and profile image */
+.navbar-text {
+  font-size: 1.1rem; /* Adjust text size */
+  color: #fff; /* Ensure text is white */
+  font-weight: 500;
+}
+
+.navbar-text span {
+  font-weight: bold; /* Make the user name bold */
+  margin-left: 10px; /* Add space between the profile image and the text */
+}
 
 
 
