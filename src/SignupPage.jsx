@@ -3,10 +3,10 @@ import { useState } from "react";
 
 export function SignupPage() {
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState ([]);
-  const [email, setEmail] = useState ([]);
-  const [password, setPassword] = useState ([]);
-  const [confirmPassword, setConfirmPassword] = useState ([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,6 +29,7 @@ export function SignupPage() {
     <div
       id="signup"
       className="d-flex justify-content-center align-items-center vh-100 position-relative"
+      style={{ backgroundColor: "#222", overflow: "hidden" }}
     >
       {/* Background Video */}
       <video autoPlay loop muted className="position-absolute w-100 h-100">
@@ -42,7 +43,7 @@ export function SignupPage() {
       {/* Overlay */}
       <div
         className="position-absolute w-100 h-100"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
       ></div>
 
       {/* Title Above the Card */}
@@ -62,13 +63,23 @@ export function SignupPage() {
       </h1>
 
       {/* Signup Card */}
-      <div className="card shadow-lg p-4" style={{ width: "400px", zIndex: 1 }}>
+      <div
+        className="card shadow-lg p-4 rounded-lg"
+        style={{
+          width: "400px",
+          zIndex: 1,
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backdropFilter: "blur(10px)",
+          borderRadius: "20px",
+        }}
+      >
         <h2
           className="text-center mb-4"
           style={{
-            fontFamily: "'Bangers', cursive", // Matching the font style
+            fontFamily: "'Bangers', cursive",
             fontSize: "2.5rem",
-            color: "#333",
+            color: "#fff", // Changed to white
+            letterSpacing: "1px",
           }}
         >
           Signup
@@ -77,8 +88,8 @@ export function SignupPage() {
         {/* Error Messages */}
         {errors.length > 0 && (
           <div className="alert alert-danger">
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
+            {errors.map((error, index) => (
+              <p key={index}>{error}</p>
             ))}
           </div>
         )}
@@ -90,12 +101,17 @@ export function SignupPage() {
             <input
               name="name"
               type="text"
-              value={name} 
-              onChange={(event) => setName(event.target.value)} 
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               maxLength={30}
-              className="form-control"
+              className="form-control pe-5"
               placeholder="Name"
               required
+              style={{
+                borderRadius: "50px",
+                border: "1px solid #ddd",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+              }}
             />
           </div>
 
@@ -104,12 +120,17 @@ export function SignupPage() {
             <input
               name="email"
               type="email"
-              value={email} 
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
               maxLength={100}
-              className="form-control"
+              className="form-control pe-5"
               placeholder="Email"
               required
+              style={{
+                borderRadius: "50px",
+                border: "1px solid #ddd",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+              }}
             />
           </div>
 
@@ -118,12 +139,17 @@ export function SignupPage() {
             <input
               name="password"
               type="password"
-              value={password} 
+              value={password}
               onChange={(event) => setPassword(event.target.value)}
               maxLength={50}
-              className="form-control"
+              className="form-control pe-5"
               placeholder="Password"
               required
+              style={{
+                borderRadius: "50px",
+                border: "1px solid #ddd",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+              }}
             />
           </div>
 
@@ -132,12 +158,17 @@ export function SignupPage() {
             <input
               name="password_confirmation"
               type="password"
-              value={confirmPassword} 
+              value={confirmPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
               maxLength={50}
-              className="form-control"
+              className="form-control pe-5"
               placeholder="Confirm Password"
               required
+              style={{
+                borderRadius: "50px",
+                border: "1px solid #ddd",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+              }}
             />
           </div>
 
@@ -146,18 +177,44 @@ export function SignupPage() {
             <input
               name="image_url"
               type="text"
-              className="form-control"
+              className="form-control pe-5"
               placeholder="Profile Picture URL"
+              style={{
+                borderRadius: "50px",
+                border: "1px solid #ddd",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+              }}
             />
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="btn w-100"
+            style={{
+              borderRadius: "50px",
+              background: "linear-gradient(135deg, #007bff, #00d2ff)",
+              color: "#fff",
+              padding: "10px 20px",
+              border: "none",
+              fontSize: "1.1rem",
+              transition: "transform 0.3s ease-in-out, background-color 0.3s ease-in-out",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.background = "linear-gradient(135deg, #0056b3, #00c1d4)";
+              e.target.style.transform = "scale(1.05)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.background = "linear-gradient(135deg, #007bff, #00d2ff)";
+              e.target.style.transform = "scale(1)";
+            }}
+          >
             Create Account
           </button>
         </form>
 
         <div className="text-center mt-3">
-          <a href="/login" className="text-decoration-none">
+          <a href="/login" className="text-decoration-none text-white">
             Already have an account? Login
           </a>
         </div>

@@ -202,4 +202,326 @@ h1.cool-heading {
   cursor: pointer;
 }
 
+/* For the input text */
+.search-bar {
+  color: #fff !important; /* Ensure input text is white */
+}
+
+/* For the placeholder text */
+.search-bar::placeholder {
+  color: #fff !important; /* Ensure placeholder text is white */
+}
+
+/* change description letters to white */
+.white-text {
+  color: #fff !important; /* Ensure the text is white */
+}
+
+/* watch video button */
+.watch-video-button {
+  background: linear-gradient(135deg, #007BFF, #00FFFF); /* Gradient background */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded corners */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.watch-video-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background: linear-gradient(135deg, #00FFFF, #007BFF); /* Reverse the gradient on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.watch-video-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.watch-video-button:active {
+  transform: scale(0.98); /* Slightly decrease size when clicked */
+  box-shadow: none; /* Remove shadow when clicked */
+}
+
+/* add to routine button */
+.add-to-routine-button {
+  background: linear-gradient(135deg, #00FFFF, #007BFF); /* Gradient from cyan to blue */
+  color: #000;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px; /* Rounded corners for smooth appearance */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out; /* Smooth transition for effects */
+}
+
+.add-to-routine-button:hover {
+  transform: scale(1.1); /* Slightly increase the size on hover */
+  background: linear-gradient(135deg, #007BFF, #00FFFF); /* Reverse gradient on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Add shadow for elevated effect */
+}
+
+.add-to-routine-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.add-to-routine-button:active {
+  transform: scale(0.98); /* Slightly shrink when clicked for pressed effect */
+  box-shadow: none; /* Remove shadow when clicked */
+}
+
+/* exercises titles */
+.exercise-category-title {
+  font-family: 'Bangers', cursive;
+  color: #0d92cf; /* Bright orange or a color of your choice */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Cool shadow effect */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem; /* Larger font for the titles */
+  transition: all 0.3s ease;
+}
+
+.exercise-category-title:hover {
+  color: #fdfdfd; /* Slightly darker orange on hover */
+  transform: scale(1.1); /* Slight scaling effect when hovered */
+}
+
+/* CARD STYLING */
+/* Card container */
+.card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)); /* Gradient background */
+  color: #fff;
+  border: 2px solid transparent; /* Transparent border initially */
+  background-clip: padding-box; /* Ensures border doesn't overlap content */
+  border-radius: 20px; /* Round edges for a modern look */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); /* Subtle outer glow effect */
+  overflow: hidden; /* Ensure no overflow of child elements */
+}
+
+/* Hover effect for card */
+.card:hover {
+  transform: translateY(-10px) scale(1.05); /* Lifts and slightly enlarges the card */
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.7); /* Stronger glowing shadow */
+  border-color: #0739c5; /* Glowing orange border when hovered */
+}
+
+/* Card image */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #00FFFF;
+  transform: scale(1); /* Ensure it doesn't zoom out initially */
+  transition: transform 0.4s ease-out; /* Smooth zoom-in transition */
+}
+
+/* Hover effect for image */
+.card:hover .card-img-top {
+  transform: scale(1.1); /* Zoom in on image */
+  filter: brightness(1.1); /* Brighten image on hover */
+}
+
+/* Card title */
+.card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for card title */
+.card:hover .card-title {
+  color: #0d92cf; /* Change title color to orange */
+  transform: translateY(-5px); /* Slight upward movement for a dynamic feel */
+}
+
+/* Card description */
+.card-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for description */
+.card:hover .card-text {
+  color: #fff; /* Text color becomes pure white on hover */
+}
+
+/* Buttons inside the card */
+.btn {
+  background-color: #00FFFF;
+  color: #000;
+  border-radius: 25px; /* Rounded button borders */
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.4); /* Subtle glowing shadow for buttons */
+}
+
+.btn:hover {
+  background-color: #0095ff; /* Orange color on hover */
+  transform: translateY(-3px); /* Slight button lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 136, 255, 0.6); /* Stronger glowing shadow */
+}
+
+/* Flexbox for buttons */
+.d-flex {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Card body */
+.card-body {
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for card body */
+.card:hover .card-body {
+  background-color: rgba(0, 0, 0, 0.85); /* Darken body on hover for contrast */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 767px) {
+  .card {
+    border-radius: 15px; /* Smaller radius for small screens */
+    box-shadow: none; /* Remove shadow for smaller screens for performance */
+  }
+
+  .card-img-top {
+    height: 180px; /* Reduce image height on mobile */
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+  }
+
+  .btn {
+    padding: 8px 16px; /* Smaller buttons for mobile */
+    font-size: 0.9rem; /* Slightly smaller font size for buttons */
+  }
+}
+
+/* General Navbar Styling */
+.custom-navbar {
+  background: rgba(0, 0, 0, 0.8); /* Dark background */
+  box-shadow: 0 4px 10px rgba(1, 124, 201, 0.7); /* Subtle glowing effect */
+  padding: 1.5rem 3rem; /* Increased padding for a taller header */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-navbar:hover {
+  background: rgba(0, 0, 0, 0.7); /* Darken effect on hover */
+  box-shadow: 0 0 20px rgba(1, 124, 201, 0.7); /* More glowing effect */
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  color: #00FFFF !important; /* Neon blue color */
+  font-family: 'Bangers', sans-serif;
+  font-size: 2rem; /* Increased font size for bigger brand text */
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #ff4500; /* Orange color on hover */
+}
+
+.navbar-logo {
+  width: 50px; /* Increased logo size */
+  height: 50px; /* Increased logo size */
+  margin-right: 15px; /* Adjusted margin for spacing */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item .nav-link {
+  color: #ffffff !important; /* Neon blue */
+  font-weight: bold;
+  font-size: 1.2rem; /* Increased font size for better visibility */
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffffff !important; /* Change to orange on hover */
+}
+
+/* User Profile Section */
+.navbar-text {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem; /* Increased font size */
+  transition: transform 0.3s ease;
+}
+
+.navbar-text img {
+  width: 50px; /* Increased profile image size */
+  height: 50px; /* Increased profile image size */
+  border-radius: 50%;
+  margin-right: 15px; /* Adjusted margin */
+}
+
+.navbar-text:hover {
+  transform: translateY(-5px); /* Slight upward shift */
+}
+
+.navbar-text span {
+  font-size: 1.3rem; /* Slightly larger text for user greeting */
+}
+
+/* Flag Styling */
+.assyria-flag {
+  width: 70px; /* Increased flag size */
+  height: 50px; /* Increased flag size */
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7); /* Glowing effect */
+  transition: transform 0.3s ease;
+}
+
+.assyria-flag:hover {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border-color: #00FFFF; /* Neon blue border */
+}
+
+.navbar-toggler-icon {
+  background-color: #00FFFF; /* Neon blue icon */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+  .navbar-brand {
+    font-size: 1.6rem; /* Adjust size for mobile */
+  }
+
+  .navbar-text {
+    font-size: 1rem; /* Adjust size for mobile */
+  }
+
+  .assyria-flag {
+    width: 60px;
+    height: 40px; /* Smaller flag on mobile */
+  }
+}
+
+
+
 

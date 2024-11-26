@@ -4,6 +4,7 @@ import axios from "axios";
 export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // State for the search bar
 
   // Helper function to group exercises by category
   const groupExercisesByCategory = (exercises) => {
@@ -17,7 +18,12 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
     }, {});
   };
 
-  const groupedExercises = groupExercisesByCategory(exercises);
+  // Filter exercises based on the search term
+  const filteredExercises = exercises.filter((exercise) =>
+    exercise.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const groupedExercises = groupExercisesByCategory(filteredExercises);
 
   const handleAddToRoutine = (exercise) => {
     const routineData = { exercise_id: exercise.id, reps: "", sets: "" };
@@ -51,7 +57,34 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
         Your browser does not support the video tag.
       </video>
       <div className="content-overlay">
-        <h1 className="text-center mb-4 cool-heading">Strength Training Exercises</h1>
+        {/* Header Section */}
+        <div
+          className="d-flex align-items-center justify-content-between mb-4 py-3 px-4 rounded shadow"
+          style={{
+            background: "linear-gradient(90deg, rgba(0,0,139,0.7), rgba(0,128,255,0.7))",
+            color: "#fff",
+          }}
+        >
+          <h1 className="cool-heading mb-0">Strength Training Exercises</h1>
+          <input
+            type="text"
+            className="form-control search-bar"
+            placeholder="Search exercises..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            style={{
+              width: "300px",
+              maxWidth: "80%",
+              border: "2px solid #007BFF",
+              backgroundColor: "#000", // black background
+              color: "#fff", // white text color
+              borderRadius: "25px", // Rounded corners
+              padding: "10px 20px", // Padding for better UX
+              fontSize: "16px", // Slightly larger font size for readability
+              boxShadow: "0px 0px 5px rgba(0, 123, 255, 0.5)", // Subtle glow effect
+            }}
+          />
+        </div>
 
         {selectedVideo && (
           <div className="modal-overlay">
@@ -99,37 +132,57 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
         {/* Render exercises grouped by category */}
         {Object.keys(groupedExercises).map((category) => (
           <div key={category}>
-            <h2 className="text-center mt-5 mb-3">
+            <h2
+              className="exercise-category-title text-center mt-5 mb-3"
+            >
               {category.charAt(0).toUpperCase() + category.slice(1)} Exercises
             </h2>
             <div className="row">
               {groupedExercises[category].map((exercise) => (
-                <div key={exercise.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-                  <div className="card shadow-sm border border-dark">
+                <div
+                  key={exercise.id}
+                  className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
+                >
+                  <div
+                    className="card shadow-lg border-0 rounded"
+                    style={{
+                      backgroundColor: "rgba(0, 0, 0, 0.8)",
+                      color: "#fff",
+                      border: "2px solid #00FFFF",
+                    }}
+                  >
                     <img
                       src={exercise.image_url}
-                      className="card-img-top"
+                      className="card-img-top rounded-top"
                       alt={exercise.name}
-                      style={{ height: "200px", objectFit: "cover" }}
+                      style={{
+                        height: "200px",
+                        objectFit: "cover",
+                        borderBottom: "2px solid #00FFFF",
+                      }}
                     />
-                    <div className="card-body">
+                    <div className="card-body text-center">
                       <h5 className="card-title">{exercise.name}</h5>
-                      <p className="card-text">{exercise.description}</p>
-                      <button
-                        className="btn custom-hover mt-2 me-2"
-                        onClick={() => {
-                          const videoId = exercise.video_url.split("v=")[1];
-                          setSelectedVideo(videoId);
-                        }}
-                      >
-                        Watch Video
-                      </button>
-                      <button
-                        className="btn custom-hover mt-2"
-                        onClick={() => handleAddToRoutine(exercise)}
-                      >
-                        Add to Routine
-                      </button>
+                      <p className="card-text small white-text">
+                        {exercise.description}
+                      </p>
+                      <div className="d-flex justify-content-center gap-2">
+                        <button
+                          className="btn btn-sm watch-video-button"
+                          onClick={() => {
+                            const videoId = exercise.video_url.split("v=")[1];
+                            setSelectedVideo(videoId);
+                          }}
+                        >
+                          Watch Video
+                        </button>
+                        <button
+                          className="btn btn-sm add-to-routine-button"
+                          onClick={() => handleAddToRoutine(exercise)}
+                        >
+                          Add to Routine
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

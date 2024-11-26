@@ -1,22 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import './index.css';
+import './index.css'; // Custom CSS
 import { LogoutLink } from './LogoutLink';
 
 export function Header() {
   const [currentUser, setCurrentUser] = useState({});
+  const location = useLocation(); 
 
   // Fetch current user from backend
   const getUserData = () => {
-    console.log('Getting user data...');
     axios.get("/users/current.json")
       .then(response => {
-        console.log(response.data);
         setCurrentUser(response.data);
       })
       .catch(() => {
-        setCurrentUser(null); // Set to null if not logged in
+        setCurrentUser(null); 
       });
   };
 
@@ -24,13 +23,11 @@ export function Header() {
     getUserData();
   }, []);
 
-  // Determine the authentication links and user display
   let authenticationLinks;
   let userDisplay;
   let myRoutineLink;
 
   if (localStorage.jwt === undefined) {
-    // Logged out
     authenticationLinks = (
       <>
         <li className="nav-item">
@@ -42,9 +39,8 @@ export function Header() {
       </>
     );
     userDisplay = null;
-    myRoutineLink = null; // Hide "My Routine" when not logged in
+    myRoutineLink = null; 
   } else {
-    // Logged in
     authenticationLinks = (
       <li className="nav-item">
         <LogoutLink className="nav-link text-decoration-none" />
@@ -53,7 +49,7 @@ export function Header() {
     userDisplay = (
       <div className="navbar-text d-flex align-items-center">
         <img
-          src={currentUser?.profilePic || "/default-profile.png"} // Default profile picture if none provided
+          src={currentUser?.profilePic || "/default-profile.png"}
           alt="Profile"
           style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }}
         />
@@ -64,19 +60,19 @@ export function Header() {
       <li className="nav-item">
         <Link className="nav-link text-decoration-none" to="/routines-new">My Routine</Link>
       </li>
-    ); // Show "My Routine" when logged in
+    ); 
   }
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-secondary">
+    <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container-fluid">
-        <Link className="navbar-brand text-black fw-bold" to="/">
+        <Link className="navbar-brand text-light fw-bold" to="/">
           <img 
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgYHqWA1exOY9nBRTsUR0pLW6rmYQ2bF4kWw&s" 
             alt="Logo" 
-            style={{ width: '40px', height: '40px', marginRight: '10px' }} 
+            className="navbar-logo"
           />
-          <span style={{ fontFamily: 'Bangers, sans-serif' }}>BUILT TO CONQUER</span> 
+          <span className="brand-text">BUILT TO CONQUER</span> 
         </Link>
         <button
           className="navbar-toggler"
@@ -98,10 +94,11 @@ export function Header() {
             {authenticationLinks}
           </ul>
           {userDisplay}
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-dark" type="submit">Search</button>
-          </form>
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_the_Assyrians_%28gold_and_blue_Assur%29.svg/2560px-Flag_of_the_Assyrians_%28gold_and_blue_Assur%29.svg.png" 
+            alt="Assyrian Flag" 
+            className="assyria-flag"
+          />
         </div>
       </div>
     </nav>

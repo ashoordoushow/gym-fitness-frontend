@@ -2,6 +2,7 @@ import { ExercisesIndex } from "./ExercisesIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+
 export function ExercisesPage() {
   const [exercises, setExercises] = useState([]);
   const [routines, setRoutines] = useState([]);
