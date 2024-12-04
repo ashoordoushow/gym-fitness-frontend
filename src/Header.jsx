@@ -10,7 +10,7 @@ export function Header() {
 
   // Fetch current user from backend
   const getUserData = () => {
-    apiClient.get("/users/current.json")
+    apiClient.get("/users/current")
       .then(response => {
         setCurrentUser(response.data);
       })
