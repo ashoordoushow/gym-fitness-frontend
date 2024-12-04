@@ -1,4 +1,4 @@
-import axios from "axios";
+import apiClient from "./config/axios";
 import { useState } from "react";
 
 export function SignupPage() {
@@ -12,7 +12,7 @@ export function SignupPage() {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
-    axios
+    apiClient
       .post("/users.json", params)
       .then((response) => {
         console.log(response.data);

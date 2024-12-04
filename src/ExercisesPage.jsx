@@ -1,6 +1,6 @@
 import { ExercisesIndex } from "./ExercisesIndex";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import apiClient from "./config/axios";
 
 
 export function ExercisesPage() {
@@ -9,7 +9,7 @@ export function ExercisesPage() {
 
   // Fetch exercises
   const handleIndex = () => {
-    axios.get("/exercises.json").then((response) => {
+    apiClient.get("/exercises.json").then((response) => {
       setExercises(response.data);
     });
   };

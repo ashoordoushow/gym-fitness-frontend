@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import apiClient from "./config/axios";
 import { Navigate } from "react-router-dom"; // Import Navigate
 
 export function VerifyCodePage() {
@@ -11,7 +11,7 @@ export function VerifyCodePage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
+    apiClient
       .post("/password/verify_code", { email, reset_code: resetCode })
       .then((response) => {
         setMessage(response.data.message);

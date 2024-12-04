@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import apiClient from "./config/axios";
 import { Navigate } from "react-router-dom"; // Import Navigate
 
 export function ForgotPasswordPage() {
@@ -10,7 +10,7 @@ export function ForgotPasswordPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
+    apiClient
       .post("/password/forgot", { email })
       .then((response) => {
         setMessage(response.data.message);

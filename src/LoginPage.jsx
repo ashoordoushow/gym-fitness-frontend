@@ -1,10 +1,10 @@
-import axios from "axios";
+import apiClient from "./config/axios";
 import { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa"; // For icons (react-icons library)
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+  apiClient.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
 export function LoginPage() {
@@ -16,11 +16,11 @@ export function LoginPage() {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
-    axios
+    apiClient
       .post("/sessions.json", params)
       .then((response) => {
         console.log(response.data);
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+        apiClient.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
         window.location.href = "/";

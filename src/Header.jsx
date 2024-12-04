@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "./config/axios";
 import './index.css'; // Custom CSS
 import { LogoutLink } from './LogoutLink';
 
@@ -10,7 +10,7 @@ export function Header() {
 
   // Fetch current user from backend
   const getUserData = () => {
-    axios.get("/users/current.json")
+    apiClient.get("/users/current.json")
       .then(response => {
         setCurrentUser(response.data);
       })

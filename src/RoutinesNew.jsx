@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import apiClient from "./config/axios";
 
 export function RoutinesNew() {
   const [routines, setRoutines] = useState([]);
@@ -11,7 +11,7 @@ export function RoutinesNew() {
   }, []);
 
   const fetchRoutines = () => {
-    axios
+    apiClient
       .get("/routines.json")
       .then((response) => {
         setRoutines(response.data);
@@ -30,7 +30,7 @@ export function RoutinesNew() {
 
   // Save routine updates to the backend
   const handleSave = (routine) => {
-    axios
+    apiClient
       .patch(`/routines/${routine.id}.json`, routine)
       .then((response) => {
         console.log("Routine updated:", response.data);
@@ -43,7 +43,7 @@ export function RoutinesNew() {
 
   // Remove a routine from the backend
   const handleRemove = (routineId) => {
-    axios
+    apiClient
       .delete(`/routines/${routineId}.json`)
       .then((response) => {
         console.log(response.data.message);

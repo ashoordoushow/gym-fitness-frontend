@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import apiClient from "./config/axios";
 import { Navigate } from "react-router-dom"; // Import Navigate
 
 export function ResetPasswordPage() {
@@ -13,7 +13,7 @@ export function ResetPasswordPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
+    apiClient
       .post("/password/reset", {
         email,
         reset_code: resetCode,

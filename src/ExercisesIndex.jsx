@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+import apiClient from "./config/axios";
 
 export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -26,7 +26,7 @@ export function ExercisesIndex({ exercises, onAddToRoutine }) {
   const handleAddToRoutine = (exercise) => {
     const routineData = { exercise_id: exercise.id, reps: "", sets: "" };
 
-    axios
+    apiClient
       .post("/routines.json", routineData)
       .then((response) => {
         console.log("Routine added:", response.data);

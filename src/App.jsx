@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import axios from 'axios';
 import { Header } from "./Header";
 import { ExercisesPage } from "./ExercisesPage";
 import { Footer } from "./Footer";
@@ -12,6 +11,7 @@ import { VerifyCodePage } from "./VerifyCodePage";  // Import the VerifyCodePage
 import { ResetPasswordPage } from "./ResetPasswordPage";  // Import the ResetPasswordPage
 import { TermsOfServicePage } from "./TermsOfServicePage";  // Import the TermsOfServicePage
 import { PrivacyPolicyPage } from "./PrivacyPolicyPage"; // Import the PrivacyPolicyPage
+import apiClient from "./config/axios";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const router = createBrowserRouter([
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/routines-new",
         element: <RoutinesNew />,
-        loader: () => axios.get("http://localhost:3000/routines.json").then(response => response.data),
+        loader: () => apiClient.get("/routines.json").then((response) => response.data),
       },
       {
         path: "/forgot-password",
@@ -74,3 +74,4 @@ function App() {
 }
 
 export default App;
+
