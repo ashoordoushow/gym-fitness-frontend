@@ -13,7 +13,7 @@ export function SignupPage() {
     setErrors([]);
     const params = new FormData(event.target);
     apiClient
-      .post("/users.json", params)
+      .post("/users", params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();

@@ -9,7 +9,7 @@ export function ExercisesPage() {
 
   // Fetch exercises
   const handleIndex = () => {
-    apiClient.get("/exercises.json").then((response) => {
+    apiClient.get("/exercises").then((response) => {
       setExercises(response.data);
     });
   };
