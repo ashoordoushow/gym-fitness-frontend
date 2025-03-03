@@ -305,7 +305,7 @@ h1.cool-heading {
 /* Hover effect for card */
 .card:hover {
   transform: translateY(-10px) scale(1.05); /* Lifts and slightly enlarges the card */
-  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.7); /* Stronger glowing shadow */
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.629); /* Stronger glowing shadow */
   border-color: #0739c5; /* Glowing orange border when hovered */
 }
 
